@@ -4,9 +4,9 @@ import type { AuthRequest } from "../middleware/auth";
 
 // Crear arma
 export const crearArma = async (req: AuthRequest, res: Response) => {
-    const { nombre, descripcion, tipo } = req.body;
+    const { nombre, descripcion, tipo, estado } = req.body;
     try {
-        const nuevaArma = await Arma.create({ nombre, descripcion, tipo, creadorId: req.user!.id });
+        const nuevaArma = await Arma.create({ nombre, descripcion, tipo, estado, creadorId: req.user!.id });
         res.status(201).json(nuevaArma);
     } catch (error: any) {
         res.status(400).json({ message: error.message });
