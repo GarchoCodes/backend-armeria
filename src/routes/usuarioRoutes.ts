@@ -5,7 +5,7 @@ import { authorize } from "../middleware/roles";
 
 const router = Router();
 
-router.post("/register", crearUsuario); // solo ADMIN crea usuarios
+router.post("/register", authMiddleware, authorize(["ADMIN"]), crearUsuario); // solo ADMIN crea usuarios
 router.post("/login", loginUsuario);
 router.get("/", authMiddleware, authorize(["ADMIN"]), listarUsuarios); // solo ADMIN lista usuarios
 router.delete("/:id", authMiddleware, authorize(["ADMIN"]), eliminarUsuario); // solo ADMIN elimina usuarios
