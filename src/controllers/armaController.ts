@@ -16,7 +16,7 @@ export const crearArma = async (req: AuthRequest, res: Response) => {
 // Listar todas las armas
 export const listarArmas = async (_req: Request, res: Response) => {
     try {
-        const armas = await Arma.find().populate("creadorId", "nombre email");
+        const armas = await Arma.find().populate("creadorId", "nombre rol");
         res.json(armas);
     } catch (error: any) {
         res.status(500).json({ message: error.message });
