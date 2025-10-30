@@ -13,7 +13,7 @@ export const authMiddleware = (req: AuthRequest, res: Response, next: NextFuncti
     }
 
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET || "claveSecreta") as { id: string, rol: string };
+        const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { id: string, rol: string };
         req.user = decoded;
         next();
     } catch {
