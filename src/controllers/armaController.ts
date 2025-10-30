@@ -27,7 +27,7 @@ export const listarArmas = async (_req: Request, res: Response) => {
 export const obtenerArma = async (req: Request, res: Response) => {
     const { id } = req.params;
     try {
-        const arma = await Arma.findById(id).populate("creadorId", "nombre email");
+        const arma = await Arma.findById(id).populate("creadorId", "nombre rol");
         if (!arma) return res.status(404).json({ message: "Arma no encontrada" });
         return res.json(arma);
     } catch (error: any) {
