@@ -7,7 +7,7 @@ const router = Router();
 
 router.post("/", authMiddleware, authorize(["ADMIN", "USER"]), crearArma);
 router.get("/", listarArmas); // público
-router.get("/:id", obtenerArma);
+router.get("/:id", obtenerArma);  // público
 router.put("/:id", authMiddleware, authorize(["ADMIN", "USER"]), actualizarArma);
 router.delete("/:id", authMiddleware, authorize(["ADMIN", "USER"]), eliminarArma);
 
